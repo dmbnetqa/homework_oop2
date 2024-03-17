@@ -1,13 +1,23 @@
 public class RadioSet {
     private int currentStation;
     private int currentVolume;
+    private int stationLimit;
+
+    public RadioSet() {
+        this.stationLimit = 10;
+    }
+
+    public RadioSet(int stationLimit) {
+        this.stationLimit = stationLimit;
+    }
 
     public int getCurrentStation() {
+
         return currentStation;
     }
 
     public void getCurrentStation(int newCurrentStation) {
-        if (newCurrentStation <= 9) {
+        if (newCurrentStation <= stationLimit - 1) {
             if (newCurrentStation >= 0) {
                 this.currentStation = newCurrentStation;
             }
@@ -15,7 +25,7 @@ public class RadioSet {
     }
 
     public void next() {
-        if (currentStation == 9) {
+        if (currentStation == stationLimit -1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -24,7 +34,7 @@ public class RadioSet {
 
     public void prev() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = stationLimit -1;
         } else {
             currentStation--;
         }
